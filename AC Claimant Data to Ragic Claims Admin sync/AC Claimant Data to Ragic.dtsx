@@ -1,0 +1,1114 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/28/2024 9:10:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALLATA-0805"
+  DTS:CreatorName="AzureAD\EmmanuelRamos"
+  DTS:DTSID="{854A7579-2015-4166-A88D-89BDD5251D34}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="AC Claimant Data to Ragic"
+  DTS:PackageType="5"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{3D11AF71-2470-4B2C-8DB2-2F21CEAF4574}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AC_Source]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C8E6BE62-A7B1-48F6-A917-E4248107B926}"
+      DTS:ObjectName="AC_Source">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=172.30.11.120;User ID=emmanuel.ramos;Initial Catalog=S3Reporting;Provider=MSOLEDBSQL.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{C8E6BE62-A7B1-48F6-A917-E4248107B926}AC_Source;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAwmcMWXpdUket/Y3zodjftQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB4VttRl8LhOgSq7ODXNHnOD1nZInJzKfLq/c8tmcqkTgAAAAAOgAAAAAIAACAAAACZ3RNktZPTCoKbKqCoejT9hgsvcdNHJNo3oMM2elLRfzAAAADRjxtn91NV/+nXMpgW8fhrfli1Lpz8zkZ3jcpZenlLqe0vF63dQ+m7dGm48L/qyG9AAAAAaY3OPMIOmpXWrvm+2/tJ5VJ3RbLXWtX+PE6v1G7JtoByWT7qMev1def2zxN9dILKrcmxcrZSDuWKAfJBmHEWxw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{26937113-E1DA-4A7F-9449-B09344E2F406}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BKRecords">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4A7D6D96-9631-4E13-BF75-7B616556405C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TotalRecords">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ED06CBBA-3A53-406D-8F4E-D31AC04DDB66}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TotalRows">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ArcherConnect"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BABFE476-7888-4B5E-A0C2-0455B850253D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ArcherConnect"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ArcherConnect\AC"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="AC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select top 10 
+c.id, 
+cl.caseid as 'ProjectId', 
+c.name, 
+c.projectcode, 
+c.tort
+, 
+cl.[FirstName]
+, 
+cl.[LastName]
+, 
+cl.[SSN]
+, 
+cl.[DOB]
+, 
+cl.[DOD]
+, 
+cl.[Gender]
+, 
+cl.[Address1]
+, 
+cl.[Address2]
+, 
+cl.[City]
+, 
+cl.[State]
+, 
+cl.[Zipcode]
+, 
+cl.[PhoneNumber]
+, 
+cl.[CaseId]
+, 
+cl.[FullName]
+
+from cases c inner join clients cl on c.id = cl.CaseId
+where c.id &gt; 7000</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ArcherConnect\AC.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AC_Source]"
+                  connectionManagerRefId="Package.ConnectionManagers[AC_Source]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[CaseId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[CaseId]"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[CaseId]"
+                      name="CaseId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      length="100"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      length="100"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[SSN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                      length="15"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[SSN]"
+                      name="SSN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[DOB]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[DOB]"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[DOB]"
+                      name="DOB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[DOD]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[DOD]"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[DOD]"
+                      name="DOD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      length="10"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Address1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[Address1]"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Address1]"
+                      name="Address1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Address2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[Address2]"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Address2]"
+                      name="Address2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="60"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="100"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Zipcode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[Zipcode]"
+                      length="10"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Zipcode]"
+                      name="Zipcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumber]"
+                      length="15"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
+                      name="PhoneNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[FullName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                      length="201"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[FullName]"
+                      name="FullName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[ProjectId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[ProjectId]"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[ProjectId]"
+                      name="ProjectId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[projectcode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[projectcode]"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[projectcode]"
+                      name="projectcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[tort]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[tort]"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[tort]"
+                      name="tort"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[CaseId]"
+                      dataType="i4"
+                      name="CaseId" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="100"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="100"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[SSN]"
+                      dataType="wstr"
+                      length="15"
+                      name="SSN" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[DOB]"
+                      dataType="dbDate"
+                      name="DOB" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[DOD]"
+                      dataType="dbDate"
+                      name="DOD" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="10"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[Address1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Address1" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[Address2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Address2" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="60"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="100"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[Zipcode]"
+                      dataType="wstr"
+                      length="10"
+                      name="Zipcode" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="PhoneNumber" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="201"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[ProjectId]"
+                      dataType="i4"
+                      name="ProjectId" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[projectcode]"
+                      dataType="wstr"
+                      length="255"
+                      name="projectcode" />
+                    <externalMetadataColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].ExternalColumns[tort]"
+                      dataType="wstr"
+                      length="255"
+                      name="tort" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[ProjectId]"
+                      dataType="i4"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[ProjectId]"
+                      name="ProjectId" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[projectcode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[projectcode]"
+                      name="projectcode" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[tort]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[tort]"
+                      name="tort" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[CaseId]"
+                      dataType="i4"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[CaseId]"
+                      name="CaseId" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[SSN]"
+                      name="SSN" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[DOB]"
+                      dataType="dbDate"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[DOB]"
+                      name="DOB" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[DOD]"
+                      dataType="dbDate"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[DOD]"
+                      name="DOD" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[Address1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[Address1]"
+                      name="Address1" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[Address2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[Address2]"
+                      name="Address2" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[Zipcode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[Zipcode]"
+                      name="Zipcode" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[PhoneNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[PhoneNumber]"
+                      name="PhoneNumber" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      dataType="wstr"
+                      length="201"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      name="FullName" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ArcherConnect\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ArcherConnect\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ArcherConnect\Derived Column.Inputs[Derived Column Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ArcherConnect\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ArcherConnect\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ArcherConnect\Derived Column.Outputs[Derived Column Output].Columns[Derived Column 1]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ArcherConnect\Derived Column.Outputs[Derived Column Output].Columns[Derived Column 1]"
+                      name="Derived Column 1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Id</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ArcherConnect\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ArcherConnect\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ArcherConnect\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ArcherConnect\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ArcherConnect\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ArcherConnect\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ArcherConnect\Recordset Destination"
+              componentClassID="Microsoft.RecordsetDestination"
+              contactInfo="Recordset Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates and populates an in-memory ADO recordset that is available outside of the data flow. Scripts and other package elements can use the recordset. For example, use a recordset to store the names of files that will be loaded into the data warehouse."
+              name="Recordset Destination">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the recordset."
+                  name="VariableName">User::BKRecords</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input]"
+                  hasSideEffects="true"
+                  name="Recordset Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[CaseId]"
+                      cachedDataType="i4"
+                      cachedName="CaseId"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[CaseId]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="FirstName"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="LastName"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[SSN]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="SSN"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[SSN]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[DOB]"
+                      cachedDataType="dbDate"
+                      cachedName="DOB"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[DOB]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[DOD]"
+                      cachedDataType="dbDate"
+                      cachedName="DOD"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[DOD]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Gender"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[Address1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Address1"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Address1]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[Address2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Address2"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Address2]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="City"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="State"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[Zipcode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Zipcode"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[Zipcode]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[PhoneNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="PhoneNumber"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[PhoneNumber]" />
+                    <inputColumn
+                      refId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="201"
+                      cachedName="FullName"
+                      lineageId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output].Columns[FullName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\ArcherConnect\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::TotalRows</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\ArcherConnect\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ArcherConnect\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\ArcherConnect\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ArcherConnect.Paths[Derived Column Output]"
+              endId="Package\ArcherConnect\Recordset Destination.Inputs[Recordset Destination Input]"
+              name="Derived Column Output"
+              startId="Package\ArcherConnect\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\ArcherConnect.Paths[OLE DB Source Output]"
+              endId="Package\ArcherConnect\Row Count.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\ArcherConnect\AC.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\ArcherConnect.Paths[Row Count Output 1]"
+              endId="Package\ArcherConnect\Derived Column.Inputs[Derived Column Input]"
+              name="Row Count Output 1"
+              startId="Package\ArcherConnect\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{56FA53EB-8D16-419A-9F30-6417C4B5C691}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Execute SQL Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{77924420-C038-41F0-B1AB-BF1537B379E8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\ZS Logging Task"
+          DTS:CreationName="ZappySys.LoggingTask"
+          DTS:Description="ZS Logging Task"
+          DTS:DTSID="{194C18F9-5D53-4E95-B69B-38D144DFF50C}"
+          DTS:ExecutableType="ZappySys.LoggingTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ZS Logging Task"
+          DTS:TaskContact="Logging Task; ZappySys LLC (c) All Rights Reserved; SSIS PowerPack; http://www.zappysys.com/support"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <LoggingTask
+              Message="Hello from {{System::PackageName}}. I started on {{System::StartTime,yyy-MM-dd hh:mm:ss tt}}"
+              LogVariableName=""
+              MessageType="Information"
+              LogMode="ExecutionLog"
+              LogFilePath=""
+              LogFileAppend="True"
+              LogDateTime="True"
+              DateTimeFormat="HH:mm:ss"
+              LogLevel="Normal"
+              PrefixTimestamp="False" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Log record count from data flow"
+      DTS:CreationName="ZappySys.LoggingTask"
+      DTS:Description="ZS Logging Task"
+      DTS:DTSID="{0FEE54C3-3F4E-4945-A6C7-D6CC5994BBC0}"
+      DTS:ExecutableType="ZappySys.LoggingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Log record count from data flow"
+      DTS:TaskContact="Logging Task; ZappySys LLC (c) All Rights Reserved; SSIS PowerPack; http://www.zappysys.com/support"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <LoggingTask
+          Message="{{User::TotalRecords}}Hello from {{System::PackageName}}. I started on {{System::StartTime,yyy-MM-dd hh:mm:ss tt}}"
+          LogVariableName="User::BKRecords"
+          MessageType="Information"
+          LogMode="ExecutionLog"
+          LogFilePath=""
+          LogFileAppend="True"
+          LogDateTime="True"
+          DateTimeFormat="HH:mm:ss"
+          LogLevel="Normal"
+          PrefixTimestamp="False" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E43FA2B8-D435-48EB-811E-E02C711C7609}"
+      DTS:From="Package\ArcherConnect"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Log record count from data flow" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A481E672-0C28-482C-A365-6CA98E91186B}"
+      DTS:From="Package\Log record count from data flow"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Foreach Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\ArcherConnect"
+          TopLeft="437.722222222222,41" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Log record count from data flow"
+          TopLeft="398.222222222222,141" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="514.222222222222,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Foreach Loop Container\Execute SQL Task"
+          TopLeft="79.5,127.5" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Foreach Loop Container\ZS Logging Task"
+          TopLeft="114.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="406,269"
+          Size="406,312"
+          Id="Package\Foreach Loop Container"
+          TopLeft="310.722222222222,246" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="514.222222222222,183">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ArcherConnect">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="133,42"
+          Id="Package\ArcherConnect\Row Count"
+          TopLeft="70.875,99" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\ArcherConnect\Derived Column"
+          TopLeft="58.375,175" />
+        <NodeLayout
+          Size="94,42"
+          Id="Package\ArcherConnect\AC"
+          TopLeft="91.375,20.5" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\ArcherConnect\Recordset Destination"
+          TopLeft="38.875,252" />
+        <EdgeLayout
+          Id="Package\ArcherConnect.Paths[Row Count Output 1]"
+          TopLeft="137.375,141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ArcherConnect.Paths[OLE DB Source Output]"
+          TopLeft="137.875,62.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.5"
+              Start="0,0"
+              End="0,29">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ArcherConnect.Paths[Derived Column Output]"
+          TopLeft="135.875,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ArcherConnect\AC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "AC Claimant Data to Ragic Claims Admin sync", "AC Claimant Data to Ragic Claims Admin sync\AC Claimant Data to Ragic Claims Admin sync.dtproj", "{BB21664F-D987-46D0-8566-1D7E9719C022}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB21664F-D987-46D0-8566-1D7E9719C022}.Development|Default.ActiveCfg = Development
+		{BB21664F-D987-46D0-8566-1D7E9719C022}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB4A4100-4E2B-4861-9058-C736948E95DF}
+	EndGlobalSection
+EndGlobal
